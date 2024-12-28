@@ -1,4 +1,4 @@
 package com.picpaysimplicado.dtos;
 
-public record AuthorizationTransactionDTO(String Status, DataAuthorizationDTO data) {
+public record AuthorizationTransactionDTO(String status, DataAuthorizationDTO data) {
 }

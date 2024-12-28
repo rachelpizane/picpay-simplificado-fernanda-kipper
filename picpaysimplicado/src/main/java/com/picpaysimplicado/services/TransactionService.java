@@ -6,9 +6,9 @@ import com.picpaysimplicado.dtos.AuthorizationTransactionDTO;
 import com.picpaysimplicado.dtos.TransactionDTO;
 import com.picpaysimplicado.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
@@ -66,13 +66,16 @@ public class TransactionService {
 
     @SuppressWarnings("null")
     private boolean authorizeTransaction(User sender, BigDecimal amount){
-        ResponseEntity<AuthorizationTransactionDTO> authorizationResponse = restTemplate.getForEntity("https://util.devi.tools/api/v2/authorize", AuthorizationTransactionDTO.class);
+        try {
+            ResponseEntity<AuthorizationTransactionDTO> authorizationResponse = restTemplate.getForEntity("https://util.devi.tools/api/v2/authorize", AuthorizationTransactionDTO.class);
 
-        if(authorizationResponse.getStatusCode() == HttpStatus.OK){
-                return authorizationResponse.getBody().data().authorization();
-        }
-
-        return false;
+            System.out.println("[SUCESS] Transação autorizada com sucesso");
+            return authorizationResponse.getBody().data().authorization();
+            
+        } catch (HttpClientErrorException error) {
+            System.out.println("[ERRO] Transação não autorizada");
+            return false;
+        } 
     }
 
 }
