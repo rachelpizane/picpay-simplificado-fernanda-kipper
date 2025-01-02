@@ -48,4 +48,6 @@ public class User {
         this.balance = data.balance();
         this.userType = data.userType();
     }
+
+    
 }

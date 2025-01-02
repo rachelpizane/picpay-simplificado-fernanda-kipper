@@ -20,7 +20,7 @@ public class NotificationService {
         try {
             restTemplate.postForEntity("https://util.devi.tools/api/v1/notify", notificationRequest, String.class);
 
-            System.out.println("[SUCESS] Notificação enviada com sucesso");
+            System.out.println("[SUCCESS] Notificação enviada com sucesso");
 
         } catch (HttpServerErrorException error) {
             System.out.println("[ERRO] Serviço de notificação fora do ar");
