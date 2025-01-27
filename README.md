@@ -10,6 +10,9 @@ Seguindo o vídeo, busquei entender os conceitos apresentados, como configuraç�
 
 Por fim, também acompanhei outro video da Fernanda Kipper onde ela inclui testes unitários para um dos Repositories e Services do mesmo projeto.
 
+## Status do Projeto
+Concluído!
+
 ## Funcionalidades implementadas
 - Cadastro de usuários.
 - Simulação de transações financeiras.
